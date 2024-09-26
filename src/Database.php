@@ -2,6 +2,9 @@
 
 namespace oldspice;
 
+use Dotenv;
+use Dotenv\Dotenv as DotenvDotenv;
+
 class Database {
   private $host;
   private $user;
@@ -10,10 +13,13 @@ class Database {
   protected $connection;
 
   protected function __construct() {
-    $this -> host = getenv('host');
-    $this -> user = getenv('user');
-    $this -> password = getenv('password');
-    $this -> database = getenv('database');
+    $path = $_SERVER['DOCUMENT_ROOT'];
+    $dotenv = Dotenv\Dotenv::createImmutable($path);
+    $dotenv -> load();
+    $this -> host = $_ENV['DATABASE_URL'];
+    $this -> user = $_ENV['DATABASE_USER'];
+    $this -> password = $_ENV['DATABASE_PASSWORD'];
+    $this -> database = $_ENV['DATABASE_NAME'];
     $this -> connection = mysqli_connect(
       $this -> host,
       $this -> user,
