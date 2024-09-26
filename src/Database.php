@@ -13,6 +13,8 @@ class Database {
   protected $connection;
 
   protected function __construct() {
+    // turn off deprecation warnings!
+    error_reporting(E_ALL ^ E_DEPRECATED);
     $path = $_SERVER['DOCUMENT_ROOT'];
     $dotenv = Dotenv\Dotenv::createImmutable($path);
     $dotenv -> load();
