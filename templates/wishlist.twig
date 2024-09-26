@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  {% include 'partials/head.twig' %}
+  <body>
+    {% include 'partials/navigation.twig' %}
+    <div class="container main-container mt-4">
+      <h3>Your wishlist</h4>
+    {% for item in wish_items %}
+      <div class="row">
+        <div class="col-3">
+          <img src="images/products/{{item.image}}" class="img-fluid">
+        </div>
+        <div class="col-6">
+          <h4 class="text-capitalize">{{item.name}}</h4>
+          <p class="price">{{item.price}}</p>
+          {% set available_class = (item.quantity > 0) ? 'text-success' : 'text-danger' %}
+          <p class="quantity {{available_class}}">{{item.quantity}} available </p>
+        </div>
+        <div class="col-3 d-flex justify-content-end">
+          <form method="get" action="wishlist.php">
+            <input type="hidden" name="product_id" value="{{item.product_id}}">
+            <button type="submit" name="action" value="delete" class="btn btn-primary">
+              <i class="fas fa-trash-alt"></i>
+              <span class="sr-only">Delete Item</span>
+            </button>
+            <a class="btn btn-primary" href="/detail.php?product_id={{item.product_id}}">detail</a>
+          </form>
+          
+        </div>
+      </div>
+      <hr>
+    {% endfor %}
+    {% if wish_items | length == 0 %}
+      <h2 class="text-muted text-center mt-4" style="margin-top:20rem;">
+        Wow! your wish list is empty!
+      </h2>
+    {% endif %}
+    {% if delete_response %}
+    <div class="alert alert-success">
+      Item deleted
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %}
+
+    </div>
+    {% include 'partials/footer.twig' %}
+  </body>
+</html>

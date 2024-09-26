@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  {% include 'partials/head.twig' %}
+  <body>
+    {% include 'partials/navigation.twig' %}
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          {% set total = result | length %}
+          {% set unit = (total > 1) ? 'items' : 'item' %}
+          <h5>Your search for {{keyword}} return {{total}} {{unit}}</h5>
+        </div>
+      </div>
+      <div class="row">
+        {% for item in result %}
+          <div class="col-md-3">
+            <h4 class="text-capitalize" style="min-height:4rem;">{{item.name}}</h4>
+            <a href="detail.php?product_id={{item.product_id}}">
+              <img class="img-fluid" src="images/products/{{item.image}}">
+            </a>
+            <h5>{{item.price}}</h5>
+            <p>{{item.description | slice(0,100) ~ '...' }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% include 'partials/footer.twig' %}
+  </body>
+</html>

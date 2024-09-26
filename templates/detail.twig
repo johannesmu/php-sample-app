@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  {% include 'partials/head.twig' %}
+  <body>
+    {% include 'partials/navigation.twig' %}
+    <div class="container main-container">
+      <div class="row mt-4">
+        <div class="col-md-6">
+          {% if detail.images | length == 1 %}
+            {% for image in detail.images %}
+              <img src="images/products/{{image}}" class="img-fluid">
+            {% endfor %}
+          {% else %}
+            <div class="carousel slide" data-ride="carousel" id="detail-carousel">
+              <div class="carousel-inner">
+                {% for image in detail.images %}
+                  {% set active = (loop.index == 1) ? 'active' : '' %}
+                  <div class="carousel-item {{active}}">
+                    <img src="images/products/{{image}}" class="img-fluid">
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+        <div class="col-md-6">
+          <h3 class="text-capitalize">{{detail.product.name}}</h3>
+          <p class="mt-2">{{detail.product.description}}</p>
+          <p id="available" class="text-success">{{detail.product.quantity}} available</p>
+          <h5 id="product-price" class="price">{{detail.product.price}}</h5>
+          <form class="form-inline" id="add-form" method="get" action="detail.php">
+            <input type="hidden" name="product_id" value="{{detail.product.product_id}}">
+            <div class="form-row flex-fill">
+              <div class="col-4">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button id="minus" type="button" class="btn btn-primary">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+                  <input id="quantity" name="quantity" type="text" class="form-control" value="1" min="1" max="{{detail.product.quantity}}">
+                  <div class="input-group-append">
+                    <button id="plus" type="button" class="btn btn-primary">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            <div class="col-4">
+              <button class="btn btn-primary w-100" name="action" value="cart">
+                <i class="fas fa-shopping-cart"></i>
+                  <span id="total-price" class="price">{{detail.product.price}}</span>
+              </button>
+            </div>
+            <div class="col-4">
+              <button class="btn btn-primary w-100" name="action" value="wish">
+                <i class="fas fa-heart"></i>
+              </button>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% include 'partials/footer.twig' %}
+    <script src="js/detail.js"></script>
+  </body>
+</html>

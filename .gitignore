@@ -1,0 +1,7 @@
+.htaccess
+vendor
+node_modules
+test.php
+composer.phar
+.env
+.vscode

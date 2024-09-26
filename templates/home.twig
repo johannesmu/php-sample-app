@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  {% include 'partials/head.twig' %}
+  <body>
+    {% include 'partials/navigation.twig' %}
+    <div class="container-fluid">
+      <div class="row mt-4">
+        <div class="col-md-2">
+          {% include 'partials/categories.twig' %}
+        </div>
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col">
+              {% if (categories.active) %}
+                {% set name = '' %}
+                {% for cat in categories.items %}
+                  {% if cat.category_id == categories.active %}
+                    {% set name = cat.category_name %}
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                {% set name = 'all categories' %}
+              {% endif %}
+              <p>Total of {{products.total}} products in <strong class="text-capitalize">{{name}}</strong></p>
+            </div>
+          </div>
+          <div class="row">
+            {% for item in products.items %}
+              <div class="col-md-3 mt-2 position-relative">
+                <h5 class="text-capitalize" style="min-height:4rem;">{{item.name}}</h5>
+                {# <a href="detail.php?product_id={{item.product_id}}"> #}
+                  <img class="border img-fluid" src="images/products/{{item.image}}">
+                {# </a> #}
+                <h5 class="price">{{item.price}}</h5>
+                <p>{{item.description | slice(0,100) ~ '...' }}</p>
+                <a class="stretched-link" href="detail.php?product_id={{item.product_id}}"></a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include 'partials/footer.twig' %}
+  </body>
+</html>

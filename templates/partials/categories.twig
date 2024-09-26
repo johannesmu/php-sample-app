@@ -1,0 +1,10 @@
+<nav class="nav nav-pills flex-column">
+  {% set allactive = (categories.active) ? '' : 'active' %}
+  <a href="index.php" class="nav-link {{allactive}}">All Categories</a>
+  {% for category in categories.items %}
+    {% set active = (categories.active == category.category_id) ? 'active' : '' %}
+    <a href="index.php?category_id={{category.category_id}}" class="nav-link {{active}} text-capitalize">
+      {{category.category_name}}
+    </a>
+  {% endfor %}
+</nav>

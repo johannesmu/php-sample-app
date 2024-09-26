@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  {% include 'partials/head.twig' %}
+  <body>
+    {% include 'partials/navigation.twig' %}
+    <div class="container main-container">
+      <div class="row">
+        <div class="col-md-4 offset-md-4 mt-4">
+          <form id="register-form" method="post" action="login.php" autocomplete="off">
+            <h3>Sign in to your account</h3>
+            {% if login.errors.email %}
+              {% set emailErrorMessage = login.errors.email %}
+              {% set emailInvalid = 'is-invalid' %}
+            {% endif %}
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input id="email" value="{{email}}" type="email" class="form-control {{emailInvalid}}" name="email" placeholder="you@domain.com" autocomplete="new-password">
+              <div class="invalid-feedback">{{emailErrorMessage}}</div>
+            </div>
+            {% if login.errors.password %}
+              {% set passwordErrorMessage = login.errors.password %}
+              {% set passwordInvalid = 'is-invalid' %}
+            {% endif %}
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input id="password" type="password" class="form-control {{passwordInvalid}}" name="password" placeholder="minimum 8 characters" autocomplete="new-password">
+              <div class="invalid-feedback">{{passwordErrorMessage}}</div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Sign In</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% include 'partials/footer.twig' %}
+  </body>
+</html>

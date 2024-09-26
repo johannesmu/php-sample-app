@@ -1,0 +1,14 @@
+.price::before {
+  content: "$";
+  padding-right: 0.1em;
+}
+.price {
+  font-weight: 400;
+}
+.main-container {
+  min-height: 80vh;
+}
+
+.footer {
+  min-height: 20vh;
+}
