@@ -14,8 +14,8 @@ else{
 
 $navigation = Navigation::getNavigation();
 
-$loader = new Twig_Loader_Filesystem('templates');
-$twig = new Twig_Environment($loader);
+$loader = new \Twig\Loader\FilesystemLoader('templates');
+$twig = new \Twig\Environment($loader);
 $template = $twig -> load('search.twig');
 
 echo $template -> render(

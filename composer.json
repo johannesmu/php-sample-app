@@ -1,6 +1,6 @@
 {
   "require": {
-    "twig/twig" : "1.42.*",
+    "twig/twig" : "^3.14",
     "vlucas/phpdotenv": "^4.1"
   },
   "autoload": {

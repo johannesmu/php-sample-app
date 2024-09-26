@@ -19,8 +19,8 @@ $wish = new WishList();
 $wish_total = $wish -> getWishListTotal();
 
 //Twig
-$loader = new Twig_Loader_Filesystem('templates');
-$twig = new Twig_Environment( $loader );
+$loader = new \Twig\Loader\FilesystemLoader('templates');
+$twig = new \Twig\Environment( $loader );
 //load the template
 $template = $twig -> load( 'home.twig' );
 //output the template to page
