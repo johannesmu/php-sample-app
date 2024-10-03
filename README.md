@@ -1,5 +1,9 @@
-# php-class-f19
-php class project for F19
+# A sample php application using Twig
+This is a sample app in PHP, using Twig as the templating engine and Composer as the autoloader for classes
+- PHP classes are stored in the *src* directory
+- Twig templates are in the *templates* directory
+- Bootstrap is used as the CSS framework for the front end
+- A *.env* file is used to store configurations such as database credentials
 
 ## Requirements
 - PHP Environment
@@ -8,10 +12,13 @@ php class project for F19
 - Composer [download it here](https://getcomposer.org)
 - Git [download it here](https://git-scm.com)
 
-If you are using Windows or Mac you can use software such as [XAMPP](https://www.apachefriends.org/index.html) to create the required environments to run this website.
+If you are using Windows or Mac you can use software such as [XAMPP](https://www.apachefriends.org/index.html) to create the required environments to run this website or you can use Docker containers.
 
 ## Clone the repository to your computer
-After you have installed the requirements, you will need to clone the repository. Open your Command Line Interface (Terminal or Windows Powershell or other) and navigate to the root directory of the web server (this README is written for Apache). If you are using XAMPP on Windows it will be in `C:\www\apache\htdocs` or something similar. To navigate there you need to type
+After you have installed the requirements, you will need to clone the repository. Open your Command Line Interface (Terminal or Windows Powershell or other) and navigate to the root directory of the web server (this README is written for Apache). 
+
+### Using XAMPP on Windows
+If you are using XAMPP on Windows it will be in `C:\www\apache\htdocs` or something similar. To navigate there you need to type
 ```
 cd C:\www\apache\htdocs
 ```
@@ -19,9 +26,9 @@ The setup maybe different in MacOS, so you may need to consult the documentation
 
 Run the following command for cloning the repository
 ```
-git clone https://github.com/johannesmu/php-class-f19 .
+git clone https://github.com/johannesmu/php-sample-app .
 ```
-
+Note the period [.] symbol 
 ## Installing dependencies
 For this you need Composer. If you install Composer after opening the command line, you may need to close and open it again.
 In your terminal run

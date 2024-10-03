@@ -4,6 +4,7 @@ namespace oldspice;
 
 use Dotenv;
 use Dotenv\Dotenv as DotenvDotenv;
+use \Exception;
 
 class Database {
   private $host;
@@ -16,8 +17,18 @@ class Database {
     // turn off deprecation warnings!
     error_reporting(E_ALL ^ E_DEPRECATED);
     $path = $_SERVER['DOCUMENT_ROOT'];
-    $dotenv = Dotenv\Dotenv::createImmutable($path);
-    $dotenv -> load();
+    echo $path;
+    echo __FILE__;
+    try {
+      $dotenv = Dotenv\Dotenv::createImmutable($path);
+      $dotenv -> load();
+      if( !$dotenv ) {
+        throw new Exception("env file missing");
+      }
+    }
+    catch( Exception $exc) {
+      echo $exc -> getMessage();
+    }
     $this -> host = $_ENV['DATABASE_URL'];
     $this -> user = $_ENV['DATABASE_USER'];
     $this -> password = $_ENV['DATABASE_PASSWORD'];
