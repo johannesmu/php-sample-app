@@ -2,10 +2,9 @@
 
 namespace oldspice;
 
-use Dotenv;
-use Dotenv\Dotenv as DotenvDotenv;
+use oldspice\Config;
 
-class Database {
+class Database extends Config {
   private $host;
   private $user;
   private $password;
@@ -14,10 +13,10 @@ class Database {
 
   protected function __construct() {
     // turn off deprecation warnings!
-    error_reporting(E_ALL ^ E_DEPRECATED);
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $dotenv = Dotenv\Dotenv::createImmutable($path);
-    $dotenv -> load();
+    //error_reporting(E_ALL ^ E_DEPRECATED);
+    // $path = $_SERVER['DOCUMENT_ROOT'];
+    // $dotenv = Dotenv\Dotenv::createImmutable($path);
+    // $dotenv -> load();
     $this -> host = $_ENV['DATABASE_URL'];
     $this -> user = $_ENV['DATABASE_USER'];
     $this -> password = $_ENV['DATABASE_PASSWORD'];

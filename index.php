@@ -1,11 +1,11 @@
 <?php
 require('vendor/autoload.php');
+require('config/site_config.php');
 
 use oldspice\Navigation;
 use oldspice\Product;
 use oldspice\Category;
 use oldspice\WishList;
-
 
 $navigation = Navigation::getNavigation();
 
@@ -29,6 +29,7 @@ echo $template -> render([
   'categories' => $categories,
   'navigation' => $navigation,
   'products' => $products,
-  'title' => 'Home Page'
+  'title' => 'Home Page',
+  'appname' => $app_name
 ]);
 ?>

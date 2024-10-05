@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/johannesmu/php-class-f19#readme",
   "dependencies": {
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^5.3.3",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0"
   }
