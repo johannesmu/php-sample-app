@@ -1,5 +1,6 @@
 <?php
 require('vendor/autoload.php');
+require('config/site_config.php');
 
 use oldspice\ProductSearch;
 use oldspice\Navigation;
@@ -23,7 +24,8 @@ echo $template -> render(
     'result' => $search_result,
     'keyword' => $_GET['query'],
     'navigation' => $navigation,
-    'title' => "Search result for " . $_GET['query']
+    'title' => "Search result for " . $_GET['query'],
+    'appname' => $app_name
   )
 );
 

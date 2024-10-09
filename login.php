@@ -1,5 +1,6 @@
 <?php
 require('vendor/autoload.php');
+require('config/site_config.php');
 
 use oldspice\Navigation;
 use oldspice\Account;
@@ -34,7 +35,8 @@ echo $template -> render([
   'navigation' => $navigation,
   'login' => $login,
   'email' => $email,
-  'title' => 'Login to your account'
+  'title' => 'Login to your account',
+  'appname' => $app_name
 ]);
 
 ?>

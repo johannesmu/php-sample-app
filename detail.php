@@ -1,5 +1,6 @@
 <?php
 require('vendor/autoload.php');
+require('config/site_config.php');
 
 use oldspice\ProductDetail;
 use oldspice\Navigation;
@@ -44,6 +45,7 @@ echo $template -> render([
   'wish_total' => $wish_total,
   'navigation' => $navigation,
   'detail' => $detail,
-  'title' => 'Detail for ' . $detail['product']['name']
+  'title' => 'Detail for ' . $detail['product']['name'],
+  'appname' => $app_name
 ]);
 ?>

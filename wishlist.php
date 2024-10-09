@@ -1,5 +1,6 @@
 <?php
 require('vendor/autoload.php');
+require('config/site_config.php');
 
 use oldspice\Navigation;
 use oldspice\WishList;
@@ -34,6 +35,7 @@ echo $template -> render([
   'wish_items' => $wish_items,
   'delete_response' => $delete_response,
   'navigation' => $navigation,
-  'title' => 'Home Page'
+  'title' => 'Home Page',
+  'appname' => $app_name
 ]);
 ?>
